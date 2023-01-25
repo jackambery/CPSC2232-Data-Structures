@@ -1,6 +1,6 @@
 
 public class Student2 {
-	
+
 	private String name;
 	private String status;
 	private String major;
@@ -15,6 +15,14 @@ public class Student2 {
 
 	public String getName() {
 		return name;
+	}
+
+	public int getSem() {
+		return sem;
+	}
+
+	public String getYear() {
+		return status;
 	}
 
 	public String toString() {
