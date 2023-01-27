@@ -1,3 +1,8 @@
+//Name: Jack Ambery
+//Date: 27 Jan 2023
+//Assignment: HW1 Arrays
+//Main driver file
+
 import java.io.*;
 import java.util.*;
 

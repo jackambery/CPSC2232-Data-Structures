@@ -1,0 +1,200 @@
+//Name: Jack Ambery
+//Date: 27 Jan 2023
+//Assignment: HW1 Arrays
+//Output file
+
+Choose an Option
+1 - Display All
+2 - Display by Index
+3 - Display Name
+4 - Display by Semester
+5 - Add a Student
+6 - Quit
+1
+
+Ron Johnson
+Senior
+CPSC
+8
+-------------------
+Rose Montaque 
+Freshman 
+MATH
+2
+-------------------
+Tom Smith 
+Sophomore 
+EDUC
+3
+-------------------
+Joe Boss 
+Freshman 
+CPSC
+1
+-------------------
+Lucy Jones 
+Junior 
+MATH
+6
+-------------------
+Ling Wen 
+Sophomore 
+MATH
+4
+-------------------
+Malique Montaque 
+Freshman
+CPSC
+2
+-------------------
+Sally Seashell
+Senior
+CPSC
+8
+-------------------
+8 Students Displayed
+
+Choose an Option
+1 - Display All
+2 - Display by Index
+3 - Display Name
+4 - Display by Semester
+5 - Add a Student
+6 - Quit
+2
+
+Enter the Index 6
+Malique Montaque 
+Freshman
+CPSC
+2
+-------------------
+Choose an Option
+1 - Display All
+2 - Display by Index
+3 - Display Name
+4 - Display by Semester
+5 - Add a Student
+6 - Quit
+3
+
+Enter the Name jo
+Ron Johnson
+Senior
+CPSC
+8
+-------------------
+Joe Boss 
+Freshman 
+CPSC
+1
+-------------------
+Lucy Jones 
+Junior 
+MATH
+6
+-------------------
+3 Students Displayed
+
+Choose an Option
+1 - Display All
+2 - Display by Index
+3 - Display Name
+4 - Display by Semester
+5 - Add a Student
+6 - Quit
+4
+
+Enter the semester (1-8): 8
+Ron Johnson
+Senior
+CPSC
+8
+Sally Seashell
+Senior
+CPSC
+8
+2 Students Displayed
+
+Choose an Option
+1 - Display All
+2 - Display by Index
+3 - Display Name
+4 - Display by Semester
+5 - Add a Student
+6 - Quit
+5
+
+Enter the Full Student Name: John Ambery
+Enter Year (Freshman, Sophomore, Junior, Senior): Sophomore
+Enter the Major (CPSC, ENG, MATH, PSYCH): CPSC
+Enter Semester Standing (1,2,3,4,5,6,7,8): 4
+
+Student <John Ambery> added.
+
+Choose an Option
+1 - Display All
+2 - Display by Index
+3 - Display Name
+4 - Display by Semester
+5 - Add a Student
+6 - Quit
+1
+
+Ron Johnson
+Senior
+CPSC
+8
+-------------------
+Rose Montaque 
+Freshman 
+MATH
+2
+-------------------
+Tom Smith 
+Sophomore 
+EDUC
+3
+-------------------
+Joe Boss 
+Freshman 
+CPSC
+1
+-------------------
+Lucy Jones 
+Junior 
+MATH
+6
+-------------------
+Ling Wen 
+Sophomore 
+MATH
+4
+-------------------
+Malique Montaque 
+Freshman
+CPSC
+2
+-------------------
+Sally Seashell
+Senior
+CPSC
+8
+-------------------
+John Ambery
+Sophomore
+CPSC
+4
+-------------------
+9 Students Displayed
+
+Choose an Option
+1 - Display All
+2 - Display by Index
+3 - Display Name
+4 - Display by Semester
+5 - Add a Student
+6 - Quit
+6
+
+Program Finished
