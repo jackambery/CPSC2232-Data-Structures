@@ -3,6 +3,7 @@ package linkedList;
 public class LinkedListImpl implements LinkedList {
 
 	private int size = 0;
+	private Node head = null;
 	
 	@Override
 	public Boolean isItemInList(String thisItem) {
@@ -12,10 +13,30 @@ public class LinkedListImpl implements LinkedList {
 	}
 
 	@Override
-	public Boolean addItem(String thisItem) {
+	public Boolean addItem(String data) {
+		/*
+		 * if head == null, nothing is in list, create new node and set it to head
+		 * 
+		 */
 		// true if added, false if it was already there, or an error
-		size++;
-		return null;
+		
+		if (head == null) {
+			Node head = new Node(data);
+			this.head = head;
+			size++;
+			return true;
+		}
+		else {
+			Node current = head;
+			while (current.next != null) {
+				current = current.next;
+			}
+			Node newNode = new Node(data);
+			current.next = newNode;
+			size++;
+			return true;
+		}
+		//need to check if node is already in list
 	}
 
 	@Override
@@ -25,31 +46,33 @@ public class LinkedListImpl implements LinkedList {
 
 	@Override
 	public void listItems() {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override
 	public Boolean deleteItem(String thisItem) {
-		// TODO Auto-generated method stub
+		
+		if (head == null) {
+			return true; //list was empty to begin with
+		}
+		
 		return null;
 	}
 
 	@Override
 	public Boolean insertBefore(String newItem, String itemToInsertBefore) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Boolean insertAfter(String newItem, String itemToInsertAfter) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void sort() {
-		// TODO Auto-generated method stub
 		
 	}
 	

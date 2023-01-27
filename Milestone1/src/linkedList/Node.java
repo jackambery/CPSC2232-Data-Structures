@@ -1,21 +1,21 @@
 package linkedList;
  
 
-public class ListItem {
+public class Node {
 	public String data;
-	public ListItem next;
+	public Node next;
 	
-	public ListItem(String data) {
+	public Node(String data) {
 		this.data = data;
 		this.next = null;
 	}
 	
-	public ListItem(String data, ListItem next) {
+	public Node(String data, Node next) {
 		this.data = data;
 		this.next = next;
 	}
 	
-	public void setNext(ListItem next) {
+	public void setNext(Node next) {
 		this.next = next;
 	}
 	
@@ -23,7 +23,7 @@ public class ListItem {
 		return data;
 	}
 	
-	public ListItem getNext() {
+	public Node getNext() {
 		return next;
 	}
 }

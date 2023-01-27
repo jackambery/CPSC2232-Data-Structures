@@ -1,6 +1,22 @@
+/*
+ * Linked List Notes:
+ * - biggest difference from arrays is the way memory is allocated
+ * - memory for LL is scattered and points to the next/previous items
+ * 		- this is dynamic opposed to static
+ * - made up of nodes, each node has a pointer to the next node
+ * - starts with a node called the "head"
+ * 
+ * Typical Methods
+ * - add
+ * - delete
+ * - insert before
+ * - insert after
+ * - search 
+ * - sort
+ * 
+ */
+
 package linkedList;
- 
- 
 
 public interface LinkedList {
 	public Boolean isItemInList(String thisItem);
