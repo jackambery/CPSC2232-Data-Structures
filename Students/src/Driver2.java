@@ -33,8 +33,7 @@ public class Driver2 {
 		do {
 
 			menu();
-			String input = kbd.next();
-			int choice = Integer.parseInt(input);
+			int choice = kbd.nextInt();
 			System.out.printf("%n");
 
 			switch (choice) {
@@ -82,11 +81,12 @@ public class Driver2 {
 		int i = 0;
 		while (students[i] != null)
 			System.out.printf("%s%n%s%n", students[i++], "-------------------");
+		System.out.println(i + " Students Displayed\n");
 	}
 
 	public static void displayIndex() {
 		System.out.printf("Enter the Index ");
-		String index = kbd.nextLine();
+		String index = kbd.next();
 		int choice = Integer.parseInt(index);
 
 		System.out.printf("%s%n%s%n", students[choice], "-------------------");
@@ -95,29 +95,37 @@ public class Driver2 {
 	public static void displayName() {
 		System.out.printf("Enter the Name ");
 		String name = kbd.next();
+		int studentCount = 0;
 
 		int i = 0;
 		while (students[i] != null) {
 			if (students[i].getName().toLowerCase().indexOf(name.toLowerCase()) != -1) {
 				System.out.printf("%s%n%s%n", students[i], "-------------------");
-				return;
+				studentCount++;
 			}
 			i++;
 		}
+		System.out.println(studentCount + " Students Displayed\n");
 
 	}
 	
 	public static void displayBySemester(int sem) {
+		int studentCount = 0;
+		
 		for (Student2 s : students) {
-			if (s.getSem() == sem) {
-				s.toString();
+			if (s != null && s.getSem() == sem) {
+				System.out.println(s.toString());
+				studentCount++;
 			}
 		}
+		System.out.println(studentCount + " Students Displayed\n");
 	}
 	
 	public static void addStudent() {
 		System.out.printf("Enter the Full Student Name: ");
-		String name = kbd.next();
+		String firstname = kbd.next();
+		String lastname = kbd.next();
+		String name = firstname + " " + lastname;
 		
 		System.out.printf("Enter Year (Freshman, Sophomore, Junior, Senior): ");
 		String status = kbd.next();
@@ -137,6 +145,8 @@ public class Driver2 {
 				break;
 			}
 		}
+		
+		System.out.println("\nStudent <" + name + "> added.\n");
 	}
 
 }
