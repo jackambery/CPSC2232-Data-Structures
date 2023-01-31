@@ -44,8 +44,15 @@ public class LinkedListImpl implements LinkedList {
 		return size;
 	}
 
+	//did this in class 1/31
 	@Override
 	public void listItems() {
+		
+		Node temp = head;
+		while (temp != null) {
+			System.out.println(temp);
+			temp = temp.getNext();
+		}
 				
 	}
 
