@@ -1,5 +1,7 @@
 package app;
  
+import java.util.HashSet;
+
 import linkedList.LinkedList;
 import linkedList.LinkedListImpl;
 import queue.Queue;
@@ -11,6 +13,12 @@ public class StagBusClient {
 
 	public static void main(String[] args) {
 		// create implementation, then
+		HashSet<String> busStops = new HashSet<>();
+		busStops.add("Circle");
+		busStops.add("Town Center");
+		busStops.add("Whole Foods");
+		busStops.add("Stop and Shop");
+		busStops.add("Marshalls");
 
 		System.out.println("-----L I S T  T E S T------");
 		
@@ -18,12 +26,17 @@ public class StagBusClient {
  		
 		System.out.println("-----S T A C K  T E S T------");
 
-		//QRunTestMethod...
+		Stack stackStops = new StackImpl(5);
+		for (String stop : busStops) {
+			stackStops.push(stop);
+		}
+		
+		//StackRunTestMethod...
 	 
 		System.out.println("----Q U E U E  T E S T-------");
 		
 
-		//StackRunTestMethod...
+		//QRunTestMethod...
 		
 	 	}
 
