@@ -7,9 +7,15 @@ public class LinkedListImpl implements LinkedList {
 	
 	@Override
 	public Boolean isItemInList(String thisItem) {
-		
-		// True if it is, false if it is not
-		return null;
+			
+		Node current = head;
+		while (current != null) {
+			if (current.getData().equals(thisItem) ) {
+				return true;
+			}
+			current = current.getNext();
+		}
+		return false;
 	}
 
 	@Override
@@ -26,7 +32,7 @@ public class LinkedListImpl implements LinkedList {
 			size++;
 			return true;
 		}
-		else {
+		if (!isItemInList(data)){
 			Node current = head;
 			while (current.next != null) {
 				current = current.next;
@@ -36,7 +42,11 @@ public class LinkedListImpl implements LinkedList {
 			size++;
 			return true;
 		}
-		//need to check if node is already in list
+		//already in list
+		else {
+			return false;
+		}
+		
 	}
 
 	@Override
@@ -44,14 +54,13 @@ public class LinkedListImpl implements LinkedList {
 		return size;
 	}
 
-	//did this in class 1/31
 	@Override
 	public void listItems() {
 		
-		Node temp = head;
-		while (temp != null) {
-			System.out.println(temp);
-			temp = temp.getNext();
+		Node current = head;
+		while (current != null) {
+			System.out.println(current);
+			current = current.getNext();
 		}
 				
 	}
@@ -63,19 +72,62 @@ public class LinkedListImpl implements LinkedList {
 			return true; //list was empty to begin with
 		}
 		
-		return null;
+		Node current = head;
+		while (current != null) {
+			if (current.getNext().getData().equals(thisItem) && current.getNext() != null) {
+				current.setNext(current.getNext().getNext());
+				size--;
+				return true;
+			}
+			current = current.getNext();
+		}
+		
+		System.out.println("node was not found, nothing removed");
+		return false;
 	}
 
 	@Override
 	public Boolean insertBefore(String newItem, String itemToInsertBefore) {
 		
-		return null;
+		if (!isItemInList(itemToInsertBefore)) {
+			System.out.println("node to be placed before not found");
+			return false;
+		}
+		
+		Node current = head;
+		while (current != null) {
+			if (current.getNext().getData().equals(itemToInsertBefore)) {
+				Node newNode = new Node(newItem);
+				newNode.setNext(current.getNext());
+				current.setNext(newNode);
+				size++;
+				return true;
+			}
+			current = current.getNext();
+		}
+		return false;
 	}
 
 	@Override
 	public Boolean insertAfter(String newItem, String itemToInsertAfter) {
 		
-		return null;
+		if (!isItemInList(itemToInsertAfter)) {
+			System.out.println("node to be placed after not found");
+			return false;
+		}
+		
+		Node current = head;
+		while (current != null) {
+			if (current.getData().equals(itemToInsertAfter)) {
+				Node newNode = new Node(newItem);
+				newNode.setNext(current.getNext());
+				current.setNext(newNode);
+				size++;
+				return true;
+			}
+			current = current.getNext();
+		}
+		return false;
 	}
 
 	@Override
