@@ -40,5 +40,27 @@ public class LinkedListTester {
 		System.out.println("november rain in list?: " + list.isItemInList("november rain"));
 		System.out.println("welcome to the jungle in list?: " + list.isItemInList("welcome to the jungle"));
 	}
+	
+	public void clientTester(LinkedList list) {
+		System.out.println("Current Stops: ");
+		list.listItems();		
+		System.out.println("\nCircle in list?: " + list.isItemInList("Circle"));
+		System.out.println("SHU in list?: " + list.isItemInList("SHU"));
+		
+		System.out.println("\nRemoving Town Center...");
+		list.deleteItem("Town Center");
+		System.out.println("Current Stops: ");
+		list.listItems();
+		
+		System.out.println("\nAdding Marshalls before Stop and Shop...");
+		list.insertBefore("Marshalls", "Stop and Shop");
+		System.out.println("Current Stops: ");
+		list.listItems();
+		
+		System.out.println("\nAdding The Seagrape after Marshalls...");
+		list.insertAfter("The Seagrape", "Marshalls");
+		System.out.println("Current Stops: ");
+		list.listItems();
+	}
 
 }

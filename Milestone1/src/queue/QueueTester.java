@@ -43,5 +43,21 @@ public class QueueTester {
 		System.out.println("is empty?: " + queue.isEmpty());
 		System.out.println("peeking... " + queue.peek());
 	}
+	
+	public void clientTester(Queue queue) {
+		queue.display();
+		
+		System.out.println("\nPeeking... " + queue.peek());
+		
+		System.out.println("\nDequeing..." + queue.deQueue());
+		queue.display();
+		
+		System.out.println("\nAdding eric and duane");
+		queue.enQueue("eric");
+		queue.enQueue("duane");
+		System.out.println("Peeking... " + queue.peek());
+		System.out.println("Dequeing... " + queue.deQueue());
+		queue.display();
+	}
 
 }

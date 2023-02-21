@@ -33,5 +33,29 @@ public class StackTester {
 	 	System.out.println("\npeeking...");
 	 	System.out.println("Element: " + stack.peek());
 	}
+	
+	public void clientTester(Stack stack) {
+		stack.display();
+		
+		System.out.println("\nPeeking... " + stack.peek());
+		
+		System.out.println("\nPopping... " + stack.pop());
+		stack.display();
+		
+		System.out.println("\nPeeking... " + stack.peek());
+		
+		System.out.println("\nAdding eric and duane");
+		stack.push("eric");
+		stack.push("duane");
+		
+		System.out.println("\nPeeking... " + stack.peek());
+		
+		System.out.println("\nClearing the bus...");
+		while(!stack.isEmpty()) {
+			stack.pop();
+		}
+		System.out.println("\nBus is empty?: " + stack.isEmpty());
+		
+	}
 
 }

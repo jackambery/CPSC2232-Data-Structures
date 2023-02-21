@@ -4,40 +4,63 @@ import java.util.HashSet;
 
 import linkedList.LinkedList;
 import linkedList.LinkedListImpl;
+import linkedList.LinkedListTester;
 import queue.Queue;
 import queue.QueueImpl;
+import queue.QueueTester;
 import stack.Stack;
 import stack.StackImpl;
+import stack.StackTester;
 
 public class StagBusClient {
 
 	public static void main(String[] args) {
-		// create implementation, then
+		
 		HashSet<String> busStops = new HashSet<>();
 		busStops.add("Circle");
 		busStops.add("Town Center");
 		busStops.add("Whole Foods");
 		busStops.add("Stop and Shop");
-		busStops.add("Marshalls");
+		
+		HashSet<String> riders = new HashSet<>();
+		riders.add("eddie");
+		riders.add("jimi");
+		riders.add("stevie");
+		riders.add("john");
+		riders.add("steve");
+		riders.add("david");
 
 		System.out.println("-----L I S T  T E S T------");
 		
-		//listRunTestMethod...
- 		
-		System.out.println("-----S T A C K  T E S T------");
-
-		Stack stackStops = new StackImpl(5);
+		LinkedList route = new LinkedListImpl();
 		for (String stop : busStops) {
-			stackStops.push(stop);
+			route.addItem(stop);
 		}
 		
-		//StackRunTestMethod...
-	 
-		System.out.println("----Q U E U E  T E S T-------");
+		LinkedListTester listTester = new LinkedListTester();
+		listTester.clientTester(route);
 		
-
-		//QRunTestMethod...
 		
-	 	}
+		System.out.println("\n----Q U E U E  T E S T-------");
+		
+		Queue waitingLine = new QueueImpl(10);
+		for (String name : riders) {
+			waitingLine.enQueue(name);
+		}
+		
+		QueueTester queueTester = new QueueTester();
+		queueTester.clientTester(waitingLine);
+		
+		
+		System.out.println("\n-----S T A C K  T E S T------");
 
+		Stack onBus = new StackImpl(10);
+		for (String name : riders) {
+			onBus.push(name);
+		}
+		
+		StackTester stackTester = new StackTester();
+		stackTester.clientTester(onBus);
+		
+	}
 }
