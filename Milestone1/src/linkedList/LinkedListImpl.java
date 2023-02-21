@@ -59,7 +59,7 @@ public class LinkedListImpl implements LinkedList {
 		
 		Node current = head;
 		while (current != null) {
-			System.out.println(current);
+			System.out.println(current.data);
 			current = current.getNext();
 		}
 				

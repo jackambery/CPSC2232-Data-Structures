@@ -17,4 +17,7 @@ public interface Queue {
 	  //display 'first' element 
 	  public String peek();
 	
+	  //I added these to access in the tester
+	  public int getSize();
+	  public int getCapacity();
 }
