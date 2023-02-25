@@ -1,5 +1,8 @@
+package done;
 
 import java.util.ArrayList;
+
+import givens.YourStack;
 
 public class YourArrayListStack implements YourStack {
 	// YOU MUST USE THIS IMPLEMENTATION - just code the methods
@@ -12,8 +15,9 @@ public class YourArrayListStack implements YourStack {
 
 	@Override
 	public Integer pop() {
-		int item = theStack.get(theStack.size());
-		theStack.set(theStack.size(), null);
+		theStack.trimToSize();
+		int item = theStack.get(theStack.size()-1);
+		theStack.remove(theStack.size()-1);
 		return item;
 	}
 

@@ -1,6 +1,10 @@
 
 import java.util.ArrayList;
 
+import done.YourArrayListStack;
+import done.YourLinkedListStack;
+import givens.SimpleRPNCalculator;
+
 public class RPNTester {
 
 	public static void main(String[] args) {
@@ -24,8 +28,15 @@ public class RPNTester {
 		testExpressions.add("11 bv +"); // bad token
 		testExpressions.add("2 3 + -"); // underflow on an operator
 		testExpressions.add("2 3 + 4 5 -"); // leftover tokens
+		
 		// YOU SHOULD ADD MORE TEST CASES!
-
+		testExpressions.add("4 5 7 2 + - *");
+		testExpressions.add("3 4 + 2 * 7 +");
+		testExpressions.add("5 7 + 6 2 - *");		
+		testExpressions.add("4 2 3 5 1 - + * *");		
+		testExpressions.add("4 2 + 3 5 1 - * +");		
+		testExpressions.add("5 3 7 9 + +");
+		
 		for (String s : testExpressions) {
 			System.out.println(calc.calculate(s));
 		}
