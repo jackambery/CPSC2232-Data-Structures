@@ -1,6 +1,3 @@
-package done;
-import givens.YourStack;
-import givens.YourStackNode;
 
 public class YourLinkedListStack implements YourStack {
 	// YOU MUST USE THIS IMPLEMENTATION - just code the methods

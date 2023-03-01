@@ -1,4 +1,3 @@
-package givens;
 
 public interface SimpleRPNCalculator {
 	

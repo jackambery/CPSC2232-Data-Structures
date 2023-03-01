@@ -1,4 +1,3 @@
-package givens;
 
 public interface YourStack {
 	public void push(Integer i);
