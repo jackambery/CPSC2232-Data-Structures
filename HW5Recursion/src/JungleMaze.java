@@ -35,7 +35,7 @@ public class JungleMaze {
 	 */
 	
 	boolean solveMaze(int maze[][], int x, int y, int[][] sol) {
-
+		
 		// Get maze size
 		int X = maze[1].length;
 		int Y = maze.length;
@@ -48,23 +48,33 @@ public class JungleMaze {
 
 		// Check if we're inside the maze
 		if (isSafe(maze, x, y, sol)) {
-
+			System.out.println("cuurent pos: " + x + " " + y);
 			// Mark the current cell in solution (BACKTRACK)
 			sol[x][y] = 1;
 
 			// Move right 
 			// if recursive call
 			//	return true;
+			if (solveMaze(maze, ++x, y, sol)) {
+				return true;
+			}
 
 			// Move down
 			// if recursive call
 			//	return true;
+			if (solveMaze(maze, x, ++y, sol)) {
+				return true;
+			}
 
 			// 
 			// Remove current cell from solution
 			// do something to the sol
 			// If the 2 moves above failed
 			// return false;
+			else {
+				sol[x][y] = 0;
+				return false;
+			}
 
 		}
 		// else
