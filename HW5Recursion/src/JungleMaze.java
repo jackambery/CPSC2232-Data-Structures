@@ -1,3 +1,8 @@
+/*
+ * Name: Jack Ambery
+ * Assignment: HW5 Recursion
+ */
+
 import java.util.Arrays;
 
 /**
@@ -8,7 +13,7 @@ import java.util.Arrays;
  * 	print the solution matrix 
  * else 
  * 	a. Mark current cell in the solution matrix 
- * 	b. Move forward horizontaly and recursively check if this leads to a solution 
+ * 	b. Move forward horizontally and recursively check if this leads to a solution 
  * 	c. If there is no solution, move down and recursively check if this leads to a solution 
  * 	d. If none of the above solution work, unmark the cell and return False
  * 
@@ -48,21 +53,21 @@ public class JungleMaze {
 
 		// Check if we're inside the maze
 		if (isSafe(maze, x, y, sol)) {
-			System.out.println("cuurent pos: " + x + " " + y);
+			System.out.println("current pos: " + x + " " + y);
 			// Mark the current cell in solution (BACKTRACK)
 			sol[x][y] = 1;
 
 			// Move right 
 			// if recursive call
 			//	return true;
-			if (solveMaze(maze, ++x, y, sol)) {
+			if (solveMaze(maze, x, y + 1, sol)) {
 				return true;
 			}
 
 			// Move down
 			// if recursive call
 			//	return true;
-			if (solveMaze(maze, x, ++y, sol)) {
+			if (solveMaze(maze, x + 1, y, sol)) {
 				return true;
 			}
 
@@ -85,7 +90,15 @@ public class JungleMaze {
 
 		// Initiate the maze
 		int maze[][] = { { 1, 0, 0, 0 }, { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 1, 1, 1, 1, } };
-
+		
+		/* maze:
+		 * 1, 0, 0, 0 
+		 * 1, 1, 0, 1
+		 * 0, 1, 0, 0
+		 * 1, 1, 1, 1
+		 */
+		
+		
 		// Initiate the solution matrix
 		int sol[][] = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
 
