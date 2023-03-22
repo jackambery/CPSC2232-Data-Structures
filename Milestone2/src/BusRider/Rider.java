@@ -37,7 +37,7 @@ public interface Rider {
 	//accessors & mutators
 	public String getName(); 
 	
-	public String getType();
+	public int getId();
 	
 	public String toString();
 	
