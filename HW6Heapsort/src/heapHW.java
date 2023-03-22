@@ -72,16 +72,18 @@ public class heapHW {
 		 */
 
 		for (int n = length - 1; n >= 0; n--) {
-			int i = 0;
+		
 			// TODO:
 			// swap the current root of the array to the end
-			int temp = array[i];
+			int temp = array[0];
+			array[0] = array[n];
+			array[n] = temp;
 			
 			
 
 			// TODO:
 			// heapify the reduced heap
-			//heapify(array, length - 1, n);
+			heapify(array, length - 1, n);
 
 		}
 
