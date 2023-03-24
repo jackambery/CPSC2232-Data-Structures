@@ -121,4 +121,9 @@ public class ArrayListMap<K, V>  implements MapInterface<K,V>
   {
     return map.iterator();  // returns ArrayList iterator
   }
+  
+  public ArrayList<MapEntry<K,V>> getMap() {
+	  return map;
+  }
+  
 }

@@ -3,35 +3,62 @@ import java.util.ArrayList;
 public class MapTester {
 
 	public static void main(String[] args) {
-		
-		String gburgAddress = 
-				"Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal."
-				+ "Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. "
-				+ "We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this. "
-				+ "But, in a larger sense, we can not dedicate -- we can not consecrate -- we can not hallow -- this ground. "
-				+ "The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. "
-				+ "The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. "
-				+ "It is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion -- "
-				+ "that we here highly resolve that these dead shall not have died in vain -- that this nation, under God, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.";
-		
-		gburgAddress = gburgAddress.replace(".", "");
-		gburgAddress = gburgAddress.replace(",", "");
-		String[] words = gburgAddress.toLowerCase().split(" ");
-		
+
+		ArrayList<String> words = new ArrayList<String>();
+		words.add("dog");
+		words.add("cat");
+		words.add("fish");
+		words.add("mouse");
+		words.add("dog");
+		words.add("fish");
+		words.add("fish");
+		words.add("fish");
+		words.add("dog");
+		words.add("mouse");
+
 		MapInterface<String, Integer> hMapWordCount = new HMap<String, Integer>();
-		MapInterface<String, Integer> arrWordCOunt = new ArrayListMap<String, Integer>();
-		
+		MapInterface<String, Integer> arrWordCount = new ArrayListMap<String, Integer>();
+
 		for (String word : words) {
-			if (hMapWordCount.contains(word) ) {
+			if (hMapWordCount.contains(word)) {
 				int count = hMapWordCount.get(word) + 1;
 				hMapWordCount.put(word, count);
-			}
-			else {
+			} else {
 				hMapWordCount.put(word, 1);
 			}
-			System.out.println(word);
-		}	
+		}
+
+		for (String word : words) {
+			if (arrWordCount.contains(word)) {
+				int count = arrWordCount.get(word) + 1;
+				arrWordCount.put(word, count);
+			} else {
+				arrWordCount.put(word, 1);
+			}
+		}
+
+		System.out.println("Hash Array Implementation:");
+		MapEntry[] hmap = ((HMap<String, Integer>) hMapWordCount).getMap();
+		for (int i = 0; i <= hMapWordCount.size(); i++) {
+			if (hmap[i] != null) {
+				System.out.println(hmap[i].toString());
+			}
+		}
+
+		System.out.println("\nArrayList Implementation:");
+		ArrayList<MapEntry<String, Integer>> arrmap = ((ArrayListMap<String, Integer>) arrWordCount).getMap();
+		for (MapEntry entry : arrmap) {
+			System.out.println(entry.toString());
+		}
 
 	}
 
 }
+
+/*												------- Part 2 -------
+ * 		When it comes to the put method, the array list implementation dynamically grows larger when a new entry is found.
+ * The array based hash map is different because there is a set size and the enlarge method must be called when more space is needed.
+ * The get method for the array list is very simple, a simple for-each loop scans through the map and simply return the value when the key 
+ * is found. The array based hash map is also simple but must use a location variable and increment it until the target key is found.
+ * 
+ */

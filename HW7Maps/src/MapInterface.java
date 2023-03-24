@@ -32,5 +32,6 @@ public interface MapInterface<K, V> extends Iterable<MapEntry<K,V>>
   
   int size();
   // Returns the number of entries in this map.
+
 }
  

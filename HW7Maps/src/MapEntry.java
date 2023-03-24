@@ -17,7 +17,7 @@ public class MapEntry<K, V>
   public String toString()
   // Returns a string representing this MapEntry.
   {
-    return "Key  : " + key + "\nValue: " + value;
+    return "Key  : " + key + "\tValue: " + value;
   }
 }
  

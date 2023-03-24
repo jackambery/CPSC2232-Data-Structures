@@ -21,7 +21,8 @@ import java.util.Iterator;
 public class HMap<K, V> implements MapInterface<K, V> {
 	protected MapEntry[] map;
 
-	protected final int DEFCAP = 1000; // default capacity
+	// i lowered DEFCAP to 1 from 1000 because map would not fill at 1000
+	protected final int DEFCAP = 1; // default capacity
 	protected final double DEFLOAD = 0.75; // default load
 
 	protected int origCap; // original capacity
@@ -154,11 +155,8 @@ public class HMap<K, V> implements MapInterface<K, V> {
 		return numPairs;
 	}
 
-	public String[] getKeys() {
-		String[] list = new String[this.size()];
-		MapIterator mapIter = new MapIterator();
-
-		return list;
+	public MapEntry[] getMap() {
+		return map;
 	}
 
 	private class MapIterator implements Iterator<MapEntry<K, V>>
