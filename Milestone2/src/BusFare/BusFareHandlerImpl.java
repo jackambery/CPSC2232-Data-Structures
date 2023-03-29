@@ -1,7 +1,5 @@
 package BusFare;
  
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 import MaxHeap.MaxHeap;
@@ -11,35 +9,32 @@ public class BusFareHandlerImpl implements BusFareHandler {
 
 	//HAS-A max-heap
 	
-	private int[] pocket = new int[10];
-	private int count = 1;
+	private MaxHeap pocket = new MaxHeapImpl(10);
 	
 	@Override
 	public void grabChange() {
-		int[] choices = {1, 5, 10, 25, 50, 100};
+		Random rd = new Random();
+		int[] choices = {5, 10, 25, 50, 100};
 		for (int i = 0; i < 10; i++) {
-			int coin = (int) Math.random() * 6;
-			pocket[i] = coin;
+			int coin = choices[rd.nextInt(0, 4)];
+			pocket.insert(coin);
 		}
 		
 	}
 
 	@Override
 	public int getMaxFromHeap() {
-		// TODO Auto-generated method stub
-		return 0;
+		return pocket.extractMax();
 	}
 
 	@Override
 	public int payBusFare(int coin) {
 		
-		//in class 3/1/23
-		//with an already sorted array
-//		if (coin > 75) {
-//			return coin;
-//		}
-//		coin = coin + pocket[count++];
-//		return payBusFare(coin);
+		if (coin > 75) {
+			return coin;
+		}
+		coin = coin + getMaxFromHeap();
+		return payBusFare(coin);
 		
 	}
  

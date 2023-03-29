@@ -15,10 +15,10 @@ public class BusFareTester {
 	private static void testBusFareHandler (BusFareHandler fare) {
 	 
 		fare.grabChange();
-//		int initialCoin = fare.getMaxFromHeap();	
-//		
-//		System.out.println(" Exact Fare paid: " + fare.payBusFare(initialCoin) + " cents ");		
-//	
+		int initialCoin = fare.getMaxFromHeap();	
+		
+		System.out.println(" Exact Fare paid: " + fare.payBusFare(initialCoin) + " cents ");		
+	
 	}
 
 }
