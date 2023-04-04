@@ -1,4 +1,3 @@
-package Traversal;
 
 public class TreeNode {
 
@@ -9,5 +8,9 @@ public class TreeNode {
 	public TreeNode(int key) {
 		data = key;
 		left = right = null;
+	}
+	
+	public String toString() {
+		return data + " ";
 	}
 }
