@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-public class Graph {
+public class QuizGraph {
 
 	private List<GraphNode> nodeList = new ArrayList<>();
 
@@ -48,6 +48,7 @@ public class Graph {
 		return node.getNeighbors();
 	}
 
+	// the rest is not for free
 	public int fewestHops(GraphNode fromNode, GraphNode toNode) {
 		addNode(fromNode);
 		addNode(toNode);
@@ -93,6 +94,7 @@ public class Graph {
 		return hops;
 	}
 
+	// these are good
 	public Integer getEdgeValue(GraphNode fromNode, GraphNode toNode) {
 		return fromNode.getDistanceToNeighbor(toNode);
 	}

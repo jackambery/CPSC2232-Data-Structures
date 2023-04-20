@@ -1,10 +1,10 @@
 
 public class driver {
-	private static Graph graph;
+	private static QuizGraph graph;
 	
 	public static void main(String[] args) {
 		
-		graph = new Graph();
+		graph = new QuizGraph();
 
 		TESTaddNode("Austin");
 		TESTaddNode("Houston");

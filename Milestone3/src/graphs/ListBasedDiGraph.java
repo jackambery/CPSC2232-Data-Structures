@@ -9,14 +9,30 @@ public class ListBasedDiGraph implements DiGraph {
 
 	@Override
 	public Boolean addNode(GraphNode node) {
-		nodeList.add(node);
-		return true;
+		 // if it doesn't exist, make it
+		if (getNode(node.getValue()) == null) {
+			nodeList.add(node);
+			return true;
+		}
+		// otherwise the node is there, and cannot be added.
+		return false; 
 	}
 
+	// overlook this, needs to be checked
 	@Override
 	public Boolean removeNode(GraphNode node) {
-		nodeList.remove(node);
-		return true;
+		// if a to b to c
+		// and b is removed, c must point to a
+		if (nodeList.contains(new GraphNode(node.getValue()))) {
+			nodeList.remove(node);
+			for (GraphNode gn : nodeList) {
+				if (gn.getNeighbors().contains(node)) {
+					gn.removeNeighbor(node);
+				}
+			}
+		}
+		
+		return false;
 	}
 
 	@Override
@@ -32,30 +48,46 @@ public class ListBasedDiGraph implements DiGraph {
 
 	@Override
 	public Boolean addEdge(GraphNode fromNode, GraphNode toNode, Integer weight) {
-		fromNode.addNeighbor(toNode, weight);
-		return true;
+		// have to create new node that actually reference the ones in the graph
+		GraphNode targetFromNode = getNode(fromNode.getValue());
+		GraphNode targetToNode = getNode(toNode.getValue());
+
+		if (targetFromNode == null || targetToNode == null)
+			return false; // nodes don't exist, can't make the edge
+
+		return targetFromNode.addNeighbor(targetToNode, weight);
 	}
 
 	@Override
 	public Boolean removeEdge(GraphNode fromNode, GraphNode toNode) {
-		fromNode.removeNeighbor(toNode);
-		return true;
+		GraphNode targetFromNode = getNode(fromNode.getValue());
+		GraphNode targetToNode = getNode(toNode.getValue());
+		
+		if (nodeList.contains(targetToNode) && nodeList.contains(targetToNode)) {
+			targetFromNode.removeNeighbor(targetToNode);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public Boolean setEdgeValue(GraphNode fromNode, GraphNode toNode, Integer newWeight) {
-		if (fromNode.getNeighbors().contains(toNode)) {
-			fromNode.removeNeighbor(toNode);
-			fromNode.addNeighbor(toNode, newWeight);
-			return true;
+		GraphNode targetFromNode = getNode(fromNode.getValue());
+		GraphNode targetToNode = getNode(toNode.getValue());
+		
+		if (targetFromNode.getNeighbors().contains(targetToNode)) {
+			targetFromNode.removeNeighbor(targetToNode);
 		}
-		fromNode.addNeighbor(toNode, newWeight);
+		targetFromNode.addNeighbor(targetToNode, newWeight);
 		return true;
 	}
 
 	@Override
 	public Integer getEdgeValue(GraphNode fromNode, GraphNode toNode) {
-		return fromNode.getDistanceToNeighbor(toNode);
+		GraphNode targetFromNode = getNode(fromNode.getValue());
+		GraphNode targetToNode = getNode(toNode.getValue());
+		
+		return targetFromNode.getDistanceToNeighbor(targetToNode);
 	}
 
 	@Override
