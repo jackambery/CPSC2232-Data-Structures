@@ -11,9 +11,10 @@ class GraphNode<T> {
 	GraphNode(T data) {
 		this.data = data;
 		this.neighbours = new ArrayList<>();
+		visited = false;
 	}
 
-	public void addneighbours(GraphNode<T> neighbourNode) {
+	public void addNeighbours(GraphNode<T> neighbourNode) {
 		this.neighbours.add(neighbourNode);
 	}
 
@@ -24,4 +25,13 @@ class GraphNode<T> {
 	public void setNeighbours(List<GraphNode<T>> neighbours) {
 		this.neighbours = neighbours;
 	}
+	
+	public Boolean getVisited() {
+		return visited;
+	}
+	
+	public void setVisited(Boolean setter) {
+		visited = setter;
+	}
+
 }

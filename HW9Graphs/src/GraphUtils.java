@@ -6,8 +6,6 @@ public class GraphUtils<T> {
 
 	public Boolean pathExists(GraphNode<T> targetFromNode, GraphNode<T> targetToNode) {
  
-		//TODO:
-
 		// create queue to manage nodes
 		// create set to manage visitedNodes
 		Queue<GraphNode> nodes = new LinkedList<GraphNode>();
@@ -15,12 +13,20 @@ public class GraphUtils<T> {
 
 		//start from the targetFromNode
 		nodes.add(targetFromNode);
-			
-			//for all neighbors:
-				//check if visited.  If not, add to the queue.  
-				//if targetToNode has been visited, return true
-			
-			
+		
+		while (!nodes.isEmpty()) {
+			visited.add(nodes.peek());
+			for (GraphNode<T> node : (ArrayList<GraphNode>) nodes.peek().getNeighbours()) {
+				if (!visited.contains(node)) {
+					nodes.add(node);
+				}
+			}
+			nodes.poll();
+		}
+		
+		if (visited.contains(targetToNode)) {
+			return true;
+		}
 		
 		//if u get here
 		return false;
