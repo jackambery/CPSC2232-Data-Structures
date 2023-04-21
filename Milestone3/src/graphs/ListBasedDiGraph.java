@@ -113,7 +113,7 @@ public class ListBasedDiGraph implements DiGraph {
 
 	@Override
 	public Boolean hasCycles() {
-		// TODO Auto-generated method stub
+		// for every station in map, if station is reachable from itself, it has cycles
 		return null;
 	}
 
