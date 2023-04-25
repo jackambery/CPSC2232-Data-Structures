@@ -105,6 +105,7 @@ public class ListBasedDiGraph implements DiGraph {
 
 	@Override
 	public Boolean nodeIsReachable(GraphNode fromNode, GraphNode toNode) {
+		// TODO need to fix this
 		if (fromNode.getDistanceToNeighbor(toNode) == null) {
 			return false;
 		}
@@ -114,18 +115,28 @@ public class ListBasedDiGraph implements DiGraph {
 	@Override
 	public Boolean hasCycles() {
 		// for every station in map, if station is reachable from itself, it has cycles
-		return null;
+		Boolean flag = true;
+		for (GraphNode gn : nodeList) {
+			if (!nodeIsReachable(gn, gn)) {
+				flag = false;
+			}
+		}
+		return flag;
 	}
 
 	@Override
 	public List<GraphNode> getNodes() {
-		// TODO Auto-generated method stub
-		return null;
+		return nodeList;
 	}
 
 	@Override
 	public GraphNode getNode(String nodeValue) {
-		// TODO Auto-generated method stub
+		for (GraphNode gn : nodeList) {
+			if (gn.getValue().equals(nodeValue) ) {
+				return gn;
+			}
+		}
+		System.out.println("***" + nodeValue + " is not in graph ***");
 		return null;
 	}
 

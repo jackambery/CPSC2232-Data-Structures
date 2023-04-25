@@ -77,6 +77,7 @@ public class SuperDuperGraphTester {
 	public static void TESTdescribeGraph() {
 		for (GraphNode thisNode : graph.getNodes()) {
 			System.out.print("Node [" + thisNode.getValue() + "] ");
+			// TODO neighbors are not appearing
 			if (thisNode.getNeighbors().isEmpty()) {
 				System.out.print("has no outgoing connections");
 			}
