@@ -5,9 +5,6 @@ public class SuperDuperGraphTester {
 	
 	public static void main(String[] args) {
 		
-		
-		//EX1
-		
 		graph = new ListBasedDiGraph();
 
 		TESTaddNode("Austin");
@@ -26,11 +23,13 @@ public class SuperDuperGraphTester {
 		TESTaddEdge("Washington", "Dallas", 1300);
 		TESTaddEdge("Dallas", "Denver", 780);		
 		TESTaddEdge("Dallas", "Chicago", 900);		
-		TESTaddEdge("Denver", "Chicago", 1000);
-		
+		TESTaddEdge("Denver", "Chicago", 1000);		
 		TESTaddEdge("Denver", "Atlanta", 1400);	
 		TESTaddEdge("Chicago", "Denver", 1000);	
 	
+		// this edge allows the graph to have cycles
+		//TESTaddEdge("Austin", "Washington", 300);
+		
 		
 		TESTdescribeGraph();
 		TESThasCycles();
@@ -63,7 +62,7 @@ public class SuperDuperGraphTester {
 	
 	public static void TESThasCycles() {
 		System.out.println("The graph has " + 
-			       (graph.hasCycles() ? "" : "NO") + " cycles");
+			       (graph.hasCycles() ? "" : "NO ") + "cycles");
 	
 	}
 	
@@ -77,7 +76,7 @@ public class SuperDuperGraphTester {
 	public static void TESTdescribeGraph() {
 		for (GraphNode thisNode : graph.getNodes()) {
 			System.out.print("Node [" + thisNode.getValue() + "] ");
-			// TODO neighbors are not appearing
+			// TASK neighbors are not appearing
 			if (thisNode.getNeighbors().isEmpty()) {
 				System.out.print("has no outgoing connections");
 			}

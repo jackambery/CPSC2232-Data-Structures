@@ -2,7 +2,9 @@
 package graphs;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class ListBasedDiGraph implements DiGraph {
 	private List<GraphNode> nodeList = new ArrayList<>();
@@ -105,11 +107,32 @@ public class ListBasedDiGraph implements DiGraph {
 
 	@Override
 	public Boolean nodeIsReachable(GraphNode fromNode, GraphNode toNode) {
-		// TODO need to fix this
-		if (fromNode.getDistanceToNeighbor(toNode) == null) {
+		GraphNode targetFromNode = getNode(fromNode.getValue());
+		GraphNode targetToNode = getNode(toNode.getValue());
+		
+		Queue<GraphNode> queue = new LinkedList<>();
+		ArrayList<GraphNode> reachable = new ArrayList<GraphNode>();
+		
+		for (GraphNode node : targetFromNode.getNeighbors() ) {
+			queue.add(node);
+			reachable.add(node);
+		}
+		while (!queue.isEmpty()) {
+			for (GraphNode gn : queue.remove().getNeighbors()) {
+					if (!reachable.contains(gn)) {
+						reachable.add(gn);
+						queue.add(gn);
+					}
+			}
+		}
+		
+		if (reachable.contains(targetToNode)) {
+			return true;
+		}
+		else {
 			return false;
 		}
-		return true;
+		
 	}
 
 	@Override
@@ -118,6 +141,7 @@ public class ListBasedDiGraph implements DiGraph {
 		Boolean flag = true;
 		for (GraphNode gn : nodeList) {
 			if (!nodeIsReachable(gn, gn)) {
+				System.out.println("I do not have a cycle: " + gn.getValue());
 				flag = false;
 			}
 		}
@@ -136,19 +160,18 @@ public class ListBasedDiGraph implements DiGraph {
 				return gn;
 			}
 		}
-		System.out.println("***" + nodeValue + " is not in graph ***");
 		return null;
 	}
 
 	@Override
 	public int fewestHops(GraphNode fromNode, GraphNode toNode) {
-		// TODO Auto-generated method stub
+		// TODO 
 		return 0;
 	}
 
 	@Override
 	public int shortestPath(GraphNode fromNode, GraphNode toNode) {
-		// TODO Auto-generated method stub
+		// TODO 
 		return 0;
 	}
 
