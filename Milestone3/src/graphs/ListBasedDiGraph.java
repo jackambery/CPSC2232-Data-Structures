@@ -2,8 +2,10 @@
 package graphs;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 public class ListBasedDiGraph implements DiGraph {
@@ -11,13 +13,13 @@ public class ListBasedDiGraph implements DiGraph {
 
 	@Override
 	public Boolean addNode(GraphNode node) {
-		 // if it doesn't exist, make it
+		// if it doesn't exist, make it
 		if (getNode(node.getValue()) == null) {
 			nodeList.add(node);
 			return true;
 		}
 		// otherwise the node is there, and cannot be added.
-		return false; 
+		return false;
 	}
 
 	// overlook this, needs to be checked
@@ -33,7 +35,7 @@ public class ListBasedDiGraph implements DiGraph {
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -64,7 +66,7 @@ public class ListBasedDiGraph implements DiGraph {
 	public Boolean removeEdge(GraphNode fromNode, GraphNode toNode) {
 		GraphNode targetFromNode = getNode(fromNode.getValue());
 		GraphNode targetToNode = getNode(toNode.getValue());
-		
+
 		if (nodeList.contains(targetToNode) && nodeList.contains(targetToNode)) {
 			targetFromNode.removeNeighbor(targetToNode);
 			return true;
@@ -76,7 +78,7 @@ public class ListBasedDiGraph implements DiGraph {
 	public Boolean setEdgeValue(GraphNode fromNode, GraphNode toNode, Integer newWeight) {
 		GraphNode targetFromNode = getNode(fromNode.getValue());
 		GraphNode targetToNode = getNode(toNode.getValue());
-		
+
 		if (targetFromNode.getNeighbors().contains(targetToNode)) {
 			targetFromNode.removeNeighbor(targetToNode);
 		}
@@ -88,7 +90,7 @@ public class ListBasedDiGraph implements DiGraph {
 	public Integer getEdgeValue(GraphNode fromNode, GraphNode toNode) {
 		GraphNode targetFromNode = getNode(fromNode.getValue());
 		GraphNode targetToNode = getNode(toNode.getValue());
-		
+
 		return targetFromNode.getDistanceToNeighbor(targetToNode);
 	}
 
@@ -109,30 +111,29 @@ public class ListBasedDiGraph implements DiGraph {
 	public Boolean nodeIsReachable(GraphNode fromNode, GraphNode toNode) {
 		GraphNode targetFromNode = getNode(fromNode.getValue());
 		GraphNode targetToNode = getNode(toNode.getValue());
-		
+
 		Queue<GraphNode> queue = new LinkedList<>();
 		ArrayList<GraphNode> reachable = new ArrayList<GraphNode>();
-		
-		for (GraphNode node : targetFromNode.getNeighbors() ) {
+
+		for (GraphNode node : targetFromNode.getNeighbors()) {
 			queue.add(node);
 			reachable.add(node);
 		}
 		while (!queue.isEmpty()) {
 			for (GraphNode gn : queue.remove().getNeighbors()) {
-					if (!reachable.contains(gn)) {
-						reachable.add(gn);
-						queue.add(gn);
-					}
+				if (!reachable.contains(gn)) {
+					reachable.add(gn);
+					queue.add(gn);
+				}
 			}
 		}
-		
+
 		if (reachable.contains(targetToNode)) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
-		
+
 	}
 
 	@Override
@@ -156,7 +157,7 @@ public class ListBasedDiGraph implements DiGraph {
 	@Override
 	public GraphNode getNode(String nodeValue) {
 		for (GraphNode gn : nodeList) {
-			if (gn.getValue().equals(nodeValue) ) {
+			if (gn.getValue().equals(nodeValue)) {
 				return gn;
 			}
 		}
@@ -165,14 +166,71 @@ public class ListBasedDiGraph implements DiGraph {
 
 	@Override
 	public int fewestHops(GraphNode fromNode, GraphNode toNode) {
+		GraphNode tFromNode = getNode(fromNode.getValue());
+		GraphNode tToNode = getNode(toNode.getValue());
+		if (!nodeIsReachable(tFromNode, tToNode)) {
+			System.out.println("These nodes are not connected");
+			return -1;
+		}
 
-		return 0;
+		Queue<GraphNode> queue = new LinkedList<>();
+		ArrayList<GraphNode> visited = new ArrayList<GraphNode>();
+		Map<GraphNode, Integer> hops = new HashMap<>();
+		
+		queue.add(tFromNode);
+		visited.add(tFromNode);
+		hops.put(tFromNode, 0);
+		
+		while (!queue.isEmpty()) {
+			GraphNode current = queue.remove();
+			
+			for (GraphNode gn : current.getNeighbors()) {
+				if (!visited.contains(gn)) {
+					queue.add(gn);
+					visited.add(gn);
+					hops.put(gn, hops.get(current) + 1);
+				}
+				if (gn.getValue().equals(tToNode.getValue())) {
+					return hops.get(gn);
+				}
+			}
+		}
+		return -1;
 	}
 
 	@Override
 	public int shortestPath(GraphNode fromNode, GraphNode toNode) {
+		GraphNode tFromNode = getNode(fromNode.getValue());
+		GraphNode tToNode = getNode(toNode.getValue());
+		
+		if (!nodeIsReachable(tFromNode, tToNode)) {
+			System.out.println("These nodes are not connected");
+			return -1;
+		}
 
-		return 0;
+		Queue<GraphNode> queue = new LinkedList<>();
+		ArrayList<GraphNode> visited = new ArrayList<GraphNode>();
+		Map<GraphNode, Integer> distance = new HashMap<>();
+		
+		queue.add(tFromNode);
+		visited.add(tFromNode);
+		distance.put(tFromNode, 0);
+		
+		while (!queue.isEmpty()) {
+			GraphNode current = queue.remove();
+			
+			for (GraphNode gn : current.getNeighbors()) {
+				if (!visited.contains(gn)) {
+					queue.add(gn);
+					visited.add(gn);
+					distance.put(gn, distance.get(current) + getEdgeValue(current, gn));
+				}
+				if (gn.getValue().equals(tToNode.getValue())) {
+					return distance.get(gn);
+				}
+			}
+		}
+		return -1;
 	}
 
 }

@@ -75,7 +75,6 @@ public class OrgChartImpl implements OrgChart {
 		nodes.remove(getEmployee(firedPerson));
 	}
 
-	// DONE!!
 	@Override
 	public void showOrgChartDepthFirst(Employee e) {
 		GenericTreeNode<Employee> root = getEmployee(e);
