@@ -9,6 +9,11 @@ public class GenericTreeNode<E> {
 	
 	public GenericTreeNode(E theItem) {
 		data = theItem;
+		children = new ArrayList<GenericTreeNode<E>>();
+	}
+	
+	public ArrayList<GenericTreeNode<E>> getChildren() {
+		return children;
 	}
 	
 	public void addChild(GenericTreeNode<E> theItem) {
@@ -16,9 +21,20 @@ public class GenericTreeNode<E> {
 	}
 	
 	public void removeChild(E theItem) {
-		// this one is a little harder.
-		// what do you do when the item has children?
-		// I suggest "give them to the parent"
+		if (children.contains(theItem)) {
+			GenericTreeNode<E> node = new GenericTreeNode<E>(theItem);
+			for (GenericTreeNode<E> g : (ArrayList<GenericTreeNode<E>>) ((GenericTreeNode<E>) theItem).getChildren()) {
+				this.addChild(g);
+			}
+			children.remove(theItem);
+		}
+		else {
+			System.out.println("node was not a child");
+		}
+	}
+	
+	public String toString() {
+		return data.toString();
 	}
 	
 	

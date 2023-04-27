@@ -14,7 +14,11 @@ public interface OrgChart {
 	public void removeEmployee(Employee firedPerson);
 		// remove the employee, give their direct reports to their supervisor
 	
-	public void showOrgChartDepthFirst(); 
+	 /* I altered this method to take in an employee that acts as the root, so
+	 * that this algorithm could be done recursively
+	 * original header - public void showOrgChartDepthFirst();
+	 */
+	public void showOrgChartDepthFirst(Employee e);
 	
 	public void showOrgChartBreadthFirst();
 	

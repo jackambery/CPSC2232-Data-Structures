@@ -165,13 +165,13 @@ public class ListBasedDiGraph implements DiGraph {
 
 	@Override
 	public int fewestHops(GraphNode fromNode, GraphNode toNode) {
-		// TODO 
+
 		return 0;
 	}
 
 	@Override
 	public int shortestPath(GraphNode fromNode, GraphNode toNode) {
-		// TODO 
+
 		return 0;
 	}
 
