@@ -30,7 +30,7 @@ public class testOrgChart {
 	static void createEmployees() {
 
 		e1.setId(100);
-		e1.setName("Rob");
+		e1.setName("rob");
 		e1.setPosition("CEO");
 
 		e2.setId(200);
@@ -97,12 +97,12 @@ public class testOrgChart {
 	}
 
 	static void printBreadthFirst() {
-//		System.out.println("- - - ");
-//		System.out.println("- Breadth First - - ");
-//
-//		orgChart.showOrgChartBreadthFirst();
-//		System.out.println("- - - ");
-//		System.out.println(" ");
+		System.out.println("- - - ");
+		System.out.println("- Breadth First - - ");
+
+		orgChart.showOrgChartBreadthFirst();
+		System.out.println("- - - ");
+		System.out.println(" ");
 	}
 
 	static void printDepthFirst() {

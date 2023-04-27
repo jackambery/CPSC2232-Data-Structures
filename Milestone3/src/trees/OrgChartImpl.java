@@ -23,7 +23,7 @@ public class OrgChartImpl implements OrgChart {
 
 	public Boolean isInTree(Employee target) {
 		for (GenericTreeNode<Employee> e : nodes) {
-			if (e.equals(target)) {
+			if (e.equals(getEmployee(target))) {
 				return true;
 			}
 		}
@@ -94,9 +94,9 @@ public class OrgChartImpl implements OrgChart {
 		
 		queue.add(nodes.get(0));
 		while (!queue.isEmpty()) {
+			System.out.println(queue.peek().toString());
 			for (GenericTreeNode<Employee> node : queue.remove().getChildren()) {
 					if (!visited.contains(node)) {
-						System.out.println(node.toString());
 						visited.add(node);
 						queue.add(node);
 					}
