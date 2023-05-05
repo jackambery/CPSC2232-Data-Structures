@@ -16,6 +16,11 @@ public class driver {
 	 
 	    TreeUtil tu = new TreeUtil();
 	    tu.printInternalNodes(root);
+	    
+	    System.out.println("\n\nAdditional Tests:");
+	    root.left.right.right = new Node(34);
+	    root.right.left = new Node(41);
+	    tu.printInternalNodes(root);
 	}
 	
 	//anticipated result:  3 1 
