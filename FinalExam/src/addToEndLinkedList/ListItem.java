@@ -10,4 +10,16 @@ public class ListItem {
 		this.data = data;
 		this.next = null;
 	}
+	
+	public void setNext(ListItem next) {
+		this.next = next;
+	}
+	
+	public ListItem getNext() {
+		return next;
+	}
+	
+	public String toString() {
+		return data;
+	}
 }

@@ -1,5 +1,8 @@
 package QualityControl;
- 
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
 
 public class QC {
 
@@ -12,8 +15,20 @@ public class QC {
 	 */
 	public static String defectParser(String s) {
 	
-		//TODO: 
-		return null;
+		Stack<Character> list = new Stack<Character>();
+		char[] array = s.toCharArray();
+		for (char c : array) {
+			if (list.isEmpty() || !list.peek().equals(c)) {
+				list.push(c);
+			}
+		}
+		
+		String efficient = "";
+		while (!list.isEmpty()) {
+			efficient = list.pop() + efficient;
+		}
+		
+		return efficient;
     }
 	
 	

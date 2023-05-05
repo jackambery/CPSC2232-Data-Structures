@@ -31,6 +31,12 @@ public class Driver {
 		System.out.println(" Ronnie -> Bonnie:\t " + dft2.isConnected(ronnie, bonnie));
 		System.out.println(" Harry -> Ronnie:\t " + dft2.isConnected(harry, ronnie));
 		System.out.println(" Bonnie -> Timmy:\t " + dft2.isConnected(bonnie, timmy)); 
+		
+		System.out.println("\nAdditional test:");
+		System.out.println(" sally -> bonnie:\t " + dft2.isConnected(sally, bonnie));
+		System.out.println(" timmy -> ronnie:\t " + dft2.isConnected(timmy, ronnie));
+		System.out.println(" harry -> bonnie:\t " + dft2.isConnected(harry, bonnie));
+		
 	}
 
 }
